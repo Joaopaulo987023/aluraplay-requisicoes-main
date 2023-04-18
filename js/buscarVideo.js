@@ -19,6 +19,12 @@ async function buscarVideo(evento){
 //Em seguinda eu mostro apenas o video que eu pesquisei
     buscar.forEach(elemento =>  lista.appendChild(
         constroiCard(elemento.titulo, elemento.descricao,elemento.url, elemento.imagem)));
+
+    //=======================================================
+    //Validação para buscar de itens que não existem na lista    
+    if(buscar.length == 0 ){
+        lista.innerHTML = `<h2 class ="mensagem__titulo"> Não existem videos com esse termo </h2>`
+    }
 }
 //=========================================
 //Criando escutador para o evento de clicar em pesquisar

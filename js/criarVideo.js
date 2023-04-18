@@ -8,9 +8,14 @@ async function criarVideo (evento){
     const url = document.querySelector("[data-url]").value;
     const imagem = document.querySelector("[data-imagem]").value
     const descricao = Math.floor(Math.random()*10).toString();
-
-    await conectaApi.criaVideo(titulo,descricao,url,imagem);
+    try{
+        await conectaApi.criaVideo(titulo,descricao,url,imagem);
     window.location.href= "../pages/envio-concluido.html";// redireciona a pagina para outra apos finalizar a tarefa
+    }
+    catch(e){
+        alert(e)
+    }
+    
 }
 
 formulario.addEventListener('submit',(evento)=> criarVideo(evento)) // assim que eu der submit no formulario eu pego os valores da função criarVideo e envio para a requisição POST
